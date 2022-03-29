@@ -1,0 +1,28 @@
+.login-wrapper {
+    max-width: 33.333334%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 15px;
+    margin-top: 30px;
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      gap: 15px;
+    }
+  
+    input {
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f3f4f6;
+        border-radius: 5px;
+        border: 1px solid #adadad;
+        font-size: 16px;
+    }
+  
+    .login-button {
+        padding: 15px 0;
+    }
+  }
+  

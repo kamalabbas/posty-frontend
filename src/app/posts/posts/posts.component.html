@@ -1,0 +1,13 @@
+<section class="post-wrapper">
+    <form *ngIf="userInfo" class="add-post-container">
+        <textarea [(ngModel)]="post.body" name="post-body" id="" cols="30" rows="5" placeholder="Post something!"></textarea>
+        <button (click)="createPost()">Post</button>
+    </form>
+
+    <div class="post-container" *ngFor="let post of posts">
+        <span><b>{{post.user.name}}</b> {{post.created_at | date:'short'}}</span>
+        <p>{{post.body}}</p>
+        <button (click)="deletePost(post)" *ngIf="userInfo" class="delete-button">Delete</button>
+        <button (click)="like(post)" *ngIf="userInfo" class="like-button">{{post.liked ? 'Unlike' : 'Like'}}</button> <span>{{post.postLikesCount}} {{post.postLikesCount == 1 ? "Like" : "Likes"}} </span>
+    </div>
+</section>

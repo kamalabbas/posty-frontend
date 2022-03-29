@@ -1,0 +1,12 @@
+<section class="login-wrapper">  
+    <form autocomplete="off">
+        <input type="email" name="email" placeholder="Your email" [(ngModel)]="auth.email">
+        <input type="password" name="password" placeholder="Password" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="auth.password">
+        <div class="flex align-center">
+            <input type="checkbox" name="rememberMe"> <label for="rememberMe">Remember Me</label>
+        </div>
+        <button class="primary-button login-button" (click)="login()">Login</button>
+    </form>
+</section>
+
+<!--  readonly onfocus="this.removeAttribute('readonly');" -->

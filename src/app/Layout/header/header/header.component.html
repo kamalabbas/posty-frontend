@@ -1,0 +1,19 @@
+<header>
+    <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="dashboard">Dashboard</a></li>
+    </ul>
+
+    <div class="header-cta" >
+        <div *ngIf="!userInfo">
+            <a routerLink="login">Log In</a>
+            <a routerLink="register">Register</a>
+        </div>
+
+        <!-- Logged in -->
+        <div class="logged-out" *ngIf="userInfo">
+            <span>{{userInfo.user.username}}</span>
+            <button (click)="logout()" class="logout">Logout</button>
+        </div>
+    </div>
+</header>
