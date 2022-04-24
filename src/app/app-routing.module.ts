@@ -6,11 +6,17 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { PostsComponent } from './posts/posts/posts.component';
 
 const routes: Routes = [
+  // defaul route if the route didn't match any it will redirect to the home page.
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+
+  // create a routing module for every module you create and append it there in order to make it lazy loaded
   {
     path: 'login',
-    component: LoginComponent,
     loadChildren: () => import('./Authentication/login/login.module').then( m => m.LoginModule)
   },
+
+  // Since we are calling the component here on the router from appComponent this is not a lazy loaded component and we achived nothing by adding a module for each component
   {
     path: 'register',
     component: RegisterComponent,

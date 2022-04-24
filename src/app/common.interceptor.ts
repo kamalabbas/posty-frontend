@@ -9,6 +9,8 @@ import { map, catchError} from 'rxjs/operators';
 export class CommonInterceptor implements HttpInterceptor {
   userInfo: any;
 
+
+  // Subscribe to the user servic behoiver this way you can keep on tracking the user if looged in or not
   constructor(private userInfoService: UserInfoService) {
     this.userInfoService.userInfo$.subscribe((user) => {
       this.userInfo = user;
@@ -16,6 +18,7 @@ export class CommonInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>,next: HttpHandler): Observable<HttpEvent<unknown>> {
+    // if there's a user create a request object and pass it through every api call
     if (this.userInfo) {
       request = request.clone({
         headers: request.headers
@@ -24,6 +27,7 @@ export class CommonInterceptor implements HttpInterceptor {
       });
     }
 
+    // Pass defaul request if the user is not logged in
     // return next.handle(request);
     return next.handle(request.clone({
         headers: request.headers.set('Content-Type', 'application/json'),
@@ -31,6 +35,8 @@ export class CommonInterceptor implements HttpInterceptor {
     );
   }
 
+
+  // Fix this code in order to display errors when ever the be returned 500 or 400
   
   //   return next.handle(req).pipe(catchError((err) => {
   //     let error = Object.assign({},err);

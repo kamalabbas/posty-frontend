@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError} from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/_services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private api: ApiService) { }
 
   getPosts(): Observable<any> {
-    return this.http.get(environment.api + 'posts');
+    return this.api.get('posts');
   }
 
   createPost(post: any): Observable<any> {
-    return this.http.post(environment.api + "posts", post);
+    return this.api.post('posts', post);
   }
 
   like(id: number): Observable<any> {
